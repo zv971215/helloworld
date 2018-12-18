@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="/js/jquery-1.12.4.js"></script>
+<body>
+    <div>
+        <form action="#" method="post">
+            <table>
+                <tr>
+                    <td><input type="button" value="查询" id="btshow"></td>
+                    <td><input type="button" id="add" value="添加"></td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+    <table>
+        <tr>
+            <td class="active">id</td>
+            <td class="success">姓名</td>
+        </tr>
+        <tbody id="booklist">
+
+        </tbody>
+    </table>
+</body>
+<script>
+    $(function () {
+         $("#btshow").click(function () {
+            alert(111);
+
+            $.post("hello", function (data) {
+                var result=data;
+                var person="";
+                for (var i =0; i<result.length;i++){
+                    person+="<tr>"+
+                        "<td>"+result[i].id+"</td>"+
+                        "<td>"+result[i].name+"</td>"+
+                        "</tr>";
+                }
+                $("#booklist").html(person)
+            });
+         });
+
+         $("#add").click(function () {
+             window.location.href="add";
+         })
+    })
+
+</script>
+</html>
